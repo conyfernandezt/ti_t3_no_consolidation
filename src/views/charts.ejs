@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Histogram Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="histogramChart"></canvas>
+
+  <script>
+    const histogramData = JSON.parse('<%- JSON.stringify(histogramData) %>');
+    
+    // Prepare the data for the chart
+    const labels = histogramData.map(item => item.label);
+    const values = histogramData.map(item => item.value);
+  
+    // Create the chart
+    const ctx = document.getElementById('histogramChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Histogram',
+          data: values,
+          backgroundColor: 'rgba(75, 192, 192, 0.6)'
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
