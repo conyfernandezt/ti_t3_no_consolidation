@@ -72,7 +72,7 @@ const removeZeros = (data) => {
 app.post("/", (req, res) => {
   console.log("Received a request");
   const message = req.body.message;
-  var b = Buffer.from(message, 'base64')
+  var b = Buffer.from(message.toString(), 'base64')
   var info = b.toString();
   const type = info.slice(0, 4);
   const id = info.slice(4, 14);
