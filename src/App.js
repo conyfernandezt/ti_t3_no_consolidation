@@ -72,7 +72,7 @@ const removeZeros = (data) => {
 app.post("/", (req, res) => {
   console.log("Received a request");
   const message = req.body.message;
-  const info = atob(message.data);
+  const info = Buffer.from(message.data).toString('base64');
   const type = info.slice(0, 4);
   const id = info.slice(4, 14);
   const origin_bank = removeZeros(info.slice(14, 21));
