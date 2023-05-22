@@ -125,7 +125,7 @@ app.get('/', (req, res) => {
       amount_op2 = result.rows[1].sum;
     });
 
-    await connectDb(`SELECT * FROM transactions ORDER BY date ASC LIMIT 100;`).then(result => {
+    await connectDb(`SELECT * FROM transactions ORDER BY date DESC LIMIT 100;`).then(result => {
       console.log("last 100 transactions")
       console.log(result.rows);
       transactions = result.rows;});
